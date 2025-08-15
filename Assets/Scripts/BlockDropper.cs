@@ -33,7 +33,8 @@ public class BlockDropper : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("TowerBase") && !hasLanded)
+        // If lands on previous block, continue game
+        if (collision.gameObject.CompareTag("PrevBlock") && !hasLanded)
         {
             hasLanded = true;
             //Destroy(rb);
@@ -41,10 +42,21 @@ public class BlockDropper : MonoBehaviour
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
 
-            this.gameObject.tag = "TowerBase";
-            blockManager.onBlockLanded(); // Tell manager to spawn next block
+            // Updating tags 
+            this.gameObject.tag = "PrevBlock";
+            collision.gameObject.tag = "TowerBase";
 
+            // Tell manager to spawn next block
+            blockManager.onBlockLanded(); 
+
+            // Disabling this script to stop checking collisions and updates
             this.enabled = false;
+        }
+        // else if falls on any block besides previous, game over
+        else if(collision.gameObject.CompareTag("TowerBase") && !hasLanded)
+        {
+            // Game Over Logic
+            Debug.Log("GAME OVER!");
         }
     }
 }
