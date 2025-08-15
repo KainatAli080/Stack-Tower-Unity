@@ -17,7 +17,7 @@ Stack Tower challenges your timing and precision. A moving block slides back and
 - [x] Orthographic camera setup for clean visuals
 - [x] Base block and moving block
 - [x] Tap-to-drop mechanic
-- [ ] Infinite block spawning
+- [x] Infinite block spawning
 - [ ] Block size adjustment on imperfect drops
 - [ ] Score system
 - [ ] Game Over & Restart
@@ -31,6 +31,7 @@ Stack Tower challenges your timing and precision. A moving block slides back and
 |-----|----------|
 | 1 | Created base block, scene setup, camera adjustments |
 | 2 | Moving block + drop mechanic with physics |
+| 3 | Infinite Block Spawning |
 
 ---
 
